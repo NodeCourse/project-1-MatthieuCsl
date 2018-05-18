@@ -1,0 +1,42 @@
+html
+    head
+        title GamingBlog
+        link(rel="stylesheet", href="/css/styles.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css")
+        link(href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet")
+
+    body
+      nav
+        .nav-wrapper
+          a.brand-logo(href='/' style='padding-left:20px') GamingBlog
+          ul#nav-mobile.right.hide-on-med-and-down
+            if user
+              li
+                a(href='/') Home
+              li
+                a(href='/register') Create review
+              li
+                a(href='/logout') Log out
+            else
+              
+              li
+                a(href='/') Home
+              li
+                a(href='/register') Account
+      main.container
+        h1 Find here our last reviews!
+          
+        for article in articles
+          .row
+                article#card-reducer.card
+                  div.card-image.responsive-img
+                    img(src=article.photo)
+                  div#titleCard.card-title
+                    h1 #{article.title}
+                  div.card-content
+                    p#descriptionCard #{article.description}
+                    p#autor writed by: #{article.user.fullname}
+                    p#rate Game rate: #{article.note}
+                  div#linkCard.card-action
+                    a(href='/articleDetail/' + article.id) See in detail
+                    a(href='/articleDetail/' + article.id) Add your comment

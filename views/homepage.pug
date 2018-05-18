@@ -1,0 +1,49 @@
+html
+    head
+        title GamingBlog
+        link(rel="stylesheet", href="/css/styles.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css")
+        link(href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet")
+
+    body
+      nav
+        .nav-wrapper
+          a.brand-logo(href='/' style='padding-left:20px') GamingBlog
+          ul#nav-mobile.right.hide-on-med-and-down
+            if user
+              li
+                a(href='/lastReviews') Last review
+              li
+                a(href='/login') Create review
+              li
+                a(href='/logout') Log out
+            else
+              
+              li
+                a(href='/lastReviews') Last review
+              li
+                a(href='/register') Account
+      main.container
+          if user
+            h1 Welcome #{user.fullname}!
+            
+            h4 See our last game Reviews
+            h4
+              a(href='/lastReviews') HERE.
+              
+            h4 Want to post your own game review?
+            h4 
+
+              a(href='/login') HERE.
+            
+          else
+          
+            h1 Welcome Friend!
+            h4 See our last game Reviews
+            h4
+              a(href='/lastReviews') HERE.
+              
+            h4 Want to post your own game review?
+            h4 
+              span Please 
+              a(href='/register') sign-in.

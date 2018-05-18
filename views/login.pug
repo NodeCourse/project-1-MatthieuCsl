@@ -1,0 +1,71 @@
+html
+    head
+        title GamingBlog
+        link(rel="stylesheet", href="/css/styles.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css")
+        link(href="https://fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
+        link(href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet")
+    body
+      nav
+        .nav-wrapper
+          a.brand-logo(href='/' style='padding-left:20px') GamingBlog
+          ul#nav-mobile.right.hide-on-med-and-down
+            li
+              a(href='/') Home
+            li
+              a(href='/lastReviews') Last reviews
+            li
+              a(href='/logout') Logout
+      main.container
+        if user
+        
+          h1 Hello #{user.fullname}!
+          h4 Succesfull authentification.
+          
+          p You are now able to create new reviews.
+          
+          .row
+          div.col.s12.m6.smaller.shad
+            div.card
+              div.card-content.black-text
+                h2.card-title Create a new game review:
+                    form(method="post", action="/api/article")
+                      div
+                        input#title(type='text', placeholder='Title' name='title')
+                      div.form-group
+                        input#description.form-control(type='text', placeholder='describe your review' name='description')
+                      div.form-group
+                        textarea#content.form-control.fater(type='text', placeholder='Main content' name='content')
+                      div.form-group
+                        input#url.form-control(type='text', placeholder='Give me the url of your image' name='image')
+                      h5 Rate the game:
+                      div.form-group(style="margin:20px;")
+                        p
+                          label
+                            input(name='group1', type='radio', checked='', value="excellent")
+                            span Excellent
+                        p
+                          label
+                            input(name='group1', type='radio', value="bon")
+                            span Bon
+                        p
+                          label
+                            input(name='group1', type='radio', value="moyen")
+                            span Moyen
+                        p
+                          label
+                            input(name='group1', type='radio')
+                            span Mauvais
+                        p
+                          label
+                            input(name='group1', type='radio')
+                            span Très mauvais
+
+                      div
+                        button.waves-effect.waves-light.btn(type='submit') Submit
+          
+        else
+          
+          h1
+          a(href='/register') Try again
+          
